@@ -1,0 +1,27 @@
+import java.util.*;
+public class CurrencyConverter {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Map<String, Double> rates = new HashMap<>();
+        rates.put("USD", 83.12);
+        rates.put("EUR", 90.45);
+        rates.put("GBP", 105.34);
+        rates.put("JPY", 0.56);
+
+        System.out.println("Available currencies: USD, EUR, GBP, JPY");
+        System.out.print("Enter the amount in INR: ");
+        double amount = sc.nextDouble();
+
+        System.out.print("Convert to (USD/EUR/GBP/JPY): ");
+        String currency = sc.next().toUpperCase();
+
+        if (rates.containsKey(currency)) {
+            double convertedAmount = amount / rates.get(currency);
+            System.out.printf("%.2f INR = %.2f %s%n", amount, convertedAmount, currency);
+        } else {
+            System.out.println("Invalid currency code.");
+        }
+
+        sc.close();
+    }
+}
